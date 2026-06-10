@@ -9,159 +9,239 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft Yahei", Helvetica, Arial, sans-serif;
+            font-family: "Microsoft Yahei", SimSun, sans-serif;
+            line-height: 1.6;
         }
         body {
-            background-color: #f0f2f5;
-            padding: 40px 20px;
-            line-height: 1.7;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background-color: #fff;
             color: #333;
         }
-        .resume-wrap {
-            width: 920px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #245799;
-            font-size: 28px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #409eff;
+
+        /* 头部容器：先放占满整行的标题，再放个人信息和照片 */
+        .resume-header {
             margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #666;
         }
-        h2 {
+
+        /* 标题样式：淡蓝色背景，占满整行，和预览图一致 */
+        .section-title {
             font-size: 20px;
-            color: #409eff;
-            margin: 28px 0 12px;
-            border-left: 5px solid #409eff;
-            padding-left: 10px;
+            border-left: 4px solid #333;
+            padding: 6px 10px;
+            margin-bottom: 12px;
+            background-color: #e6f0ff; /* 淡蓝色背景 */
+            width: 100%; /* 关键：背景色占满整行 */
         }
-        .info-box {
+
+        /* 个人信息和照片的布局：标题下方左右分栏 */
+        .header-content {
             display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            font-size: 15px;
-            margin-bottom: 10px;
+            justify-content: space-between;
+            align-items: flex-start;
         }
-        .job-item {
-            margin: 16px 0;
-        }
-        .job-title {
+
+        .header-info p {
             font-size: 16px;
-            font-weight: 600;
-            color: #222;
+            margin: 8px 0;
         }
-        .time-text {
-            color: #666;
-            font-size: 14px;
-            margin-left: 10px;
+
+        /* 照片样式：在标题背景下方，不遮挡背景色 */
+        .header-img {
+            /* 不需要再设置margin-top，因为照片在标题下方 */
         }
+
+        .resume-photo {
+            width: 120px;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .content {
+            padding-left: 14px;
+            font-size: 15px;
+        }
+
+        .content p, .content li {
+            margin: 8px 0;
+        }
+
         ul {
-            margin: 8px 0 8px 22px;
+            list-style-type: disc;
+            padding-left: 20px;
         }
-        li {
-            margin: 6px 0;
-            font-size: 15px;
-        }
-        p {
-            font-size: 15px;
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            .header-img {
+                margin-top: 15px;
+                align-self: flex-start;
+            }
+            .resume-photo {
+                width: 100px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="resume-wrap">
-        <h1>周志宇 个人简历</h1>
-
-        <!-- 基本信息 -->
-        <h2>基本信息</h2>
-        <div class="info-box">
-            <span>姓名：周志宇</span>
-            <span>性别：男</span>
-            <span>年龄：30岁</span>
+    <!-- 头部：先放占满整行的标题，再放个人信息和照片 -->
+    <div class="resume-header">
+        <div class="section-title">个人信息</div>
+        <div class="header-content">
+            <div class="header-info">
+                <p>姓名：周志宇</p>
+                <p>性别：男 &nbsp;&nbsp; 年龄：30</p>
+                <p>手机：13544146365</p>
+                <p>邮箱：2730759127@qq.com</p>
+                <p>意向：测试工程师</p>
+            </div>
+            <!-- 照片相对路径：同目录下 avatar.jpg -->
+            <div class="header-img">
+                <img src="./avatar.jpg" alt="个人证件照" class="resume-photo">
+            </div>
         </div>
-        <div class="info-box">
-            <span>联系电话：13544146365</span>
-            <span>邮箱：2730759127@qq.com</span>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="section">
+        <div class="section-title">教育背景</div>
+        <div class="content">
+            <p>吉林大学 &nbsp; 2013.9-2017.7 &nbsp; 信息工程专业 &nbsp; 本科</p>
+            <p>英语等级：CET-6</p>
         </div>
+    </div>
 
-        <!-- 教育背景 -->
-        <h2>教育背景</h2>
-        <div class="job-item">
-            <div class="job-title">吉林大学 | 信息工程 | 本科 <span class="time-text">2013.09 - 2017.07</span></div>
-            <p>英语水平：CET-6</p>
-        </div>
-
-        <!-- 专业技能 -->
-        <h2>专业技能</h2>
-        <ul>
-            <li>编程：熟练掌握 Python、C 语言，可独立开发自动化脚本与业务程序</li>
-            <li>环境：熟悉 Linux 系统及命令，熟练使用 Docker 容器</li>
-            <li>数据库：精通 Oracle、MySQL，熟练编写各类 SQL 语句完成数据操作与校验</li>
-            <li>自动化测试：掌握 Python+Appium+ADB 移动端自动化，熟悉嵌入式、车载设备自动化测试</li>
-            <li>数据爬虫：熟悉网页爬取、数据清洗、JSON 入库、数据备份与日常运维</li>
-            <li>人工智能：了解机器学习、神经网络、分类回归算法，掌握AI项目基础原理</li>
-        </ul>
-
-        <!-- 工作经历 -->
-        <h2>工作经历</h2>
-        <div class="job-item">
-            <div class="job-title">软通动力技术有限公司 | 测试工程师 <span class="time-text">2024.02 - 2025.10</span></div>
+    <!-- 掌握技能 -->
+    <div class="section">
+        <div class="section-title">掌握技能</div>
+        <div class="content">
             <ul>
-                <li>华为MDC低功耗测试：排查用例故障，完成环境迁移、设备部署与多车型测试</li>
-                <li>美的机械臂项目：基于Python API完成测试用例、任务、报告与DevOps平台对接</li>
-                <li>蔚来换电项目：编写多平台自动化测试用例，实现自动化回归测试</li>
-                <li>大模型推理测试：基于Docker搭建容器化环境，完成参数配置与功能测试</li>
+                <li>熟悉python 编程，熟悉C语言编程</li>
+                <li>熟悉linux 环境和常用命令</li>
+                <li>熟悉oracle、MySql 数据库,熟练sql 增，删，改，多表查询等操作</li>
+                <li>熟悉Python+appiun+adb+手机模拟器测试</li>
+                <li>熟悉网页元素的定位，数据爬取流程</li>
+                <li>熟悉排序算法、熟悉docker使用、熟悉机器学习算法</li>
+                <li>熟悉机器学习和神经网络等的分类和回归算法，了解目标检测，邮件分类等常见人工智能项目的底层原理</li>
             </ul>
         </div>
+    </div>
 
-        <div class="job-item">
-            <div class="job-title">中科创达科技股份有限公司 | 测试工程师 <span class="time-text">2022.05 - 2024.01</span></div>
-            <ul>
-                <li>高通蓝牙嵌入式Linux测试：版本编译、电路板烧录，搭建自动化与压力测试环境</li>
-                <li>编写自动化脚本，分析日志定位问题，优化测试框架提升执行效率</li>
-            </ul>
+    <!-- 工作经历 -->
+    <div class="section">
+        <div class="section-title">工作经历</div>
+        <div class="content">
+            <p><strong>软通动力技术有限公司</strong> （2024.2.6-2025.10.11）</p>
+            <p>（1）MDC管理面低功耗测试</p>
+            <p>1.定位长稳环境用例失败的原因，例如：PAS-LS-PAS-ON-PAO-DS状态切换过程中报错的原因</p>
+            <p>2.将环境从B3-F1迁移到B5-F1，将搭建环境所需的mdc,canoe/周立功，以太网转接盒，液冷/风扇，电源，继电器等搬到B5-F1然后搭建环境，记录mdc资产编号</p>
+            <p>3.执行不同车型的测试用例</p>
+
+            <p>（2）美的机械臂项目</p>
+            <p>1.利用东舟公司提供的python api获取东舟app里面的测试用例，和java后台的同事对接，上传到devops平台</p>
+            <p>2.获取devops平台勾选的用例，在东舟app上创建测试任务(利用东舟的python api)</p>
+            <p>3.利用东舟的python api 获取任务执行结果和测试报告，上传到devops平台</p>
+
+            <p>（3）蔚来换电自动化项目</p>
+            <p>1.编写banyan平台自动化测试用例</p>
+            <p>2.编写alps平台自动化测试用例</p>
+            <p>3.编写fy平台自动化测试用例</p>
+
+            <p>（4）推理服务化测试项目</p>
+            <p>1.搭建测试环境</p>
+            <p>2.编写提供给大模型服务的参数</p>
+            <p>3.执行测试用例</p>
+            <br>
+
+            <p><strong>中科创达科技股份有限公司</strong> （2022.5.5-2024.1.19）</p>
+            <p>（1）高通蓝牙测试项目</p>
+            <p>1.对嵌入式linux系统的btapp进行功能测试，编写btapp的自动化测试脚本</p>
+            <p>2.编译版本，使用Trace/Jlink给电路板烧版本，搭建TABI自动化测试环境，进行TABI自动化测试</p>
+            <p>3.研究压力测试脚本，搭建压力测试环境，跑压力测试</p>
+            <br>
+
+            <p><strong>软通动力技术有限公司</strong> （2020.11-2021.8）</p>
+            <p>(1)百度项目：对百度的云手机app和h5页面进行功能测试，编写测试用例，创建bug并持续跟踪</p>
+            <br>
+
+            <p><strong>天阳宏业科技有限公司</strong> （2019.3-2020.11）</p>
+            <p>（1）兴业银行项目：利用oracle 对数据迁移过程中的数据进行测试，利用qc 对组合管理与分析评价系统测试</p>
+            <p>（2）阿里云项目：用androidsdk+appium+vysor+python对手机app测试</p>
+            <p>（3）惠信信息爬虫项目：爬取上级给定的网站、app的内容，并负责入库、备份以及日常维护等工作，与后端工程师配合，将爬取的内容以固定的格式（json）写入mysql数据库，根据需求学习相关python知识并应用到项目中</p>
+            <br>
+
+            <p><strong>中兴通讯股份有限公司</strong> （2017.7-2018.7）</p>
+            <p>FPGA开发助理工程师：对版本自动化测试，并维护自动化测试的环境</p>
         </div>
+    </div>
 
-        <div class="job-item">
-            <div class="job-title">软通动力技术有限公司 | 测试工程师 <span class="time-text">2020.11 - 2021.08</span></div>
-            <ul>
-                <li>负责百度云手机APP、H5页面功能测试，编写用例并全程跟进缺陷</li>
-            </ul>
+    <!-- 项目描述 -->
+    <div class="section">
+        <div class="section-title">项目描述</div>
+        <div class="content">
+            <p><strong>一、MDC管理面低功耗测试</strong> 项目时间：2025.6.23-2025.10.11</p>
+            <p>项目描述：mdc是华为智驾域域控中心mobile data center，分为多种型号，610，620，620pro等，北汽，上汽，比亚迪等不同车企的某款车型例如，seriesF1L使用610包含1块mcu和1块soc。型号里面有pro的则包含2块soc。mcu使用classic autosar 操作系统，soc使用adaptive autosar操作系统，两个操作系统间使用someip协议进行通信，同一操作系统使用以太网进行通信。mdc的操作系统提供了很多服务，分为数据面服务和管理面服务。数据面服务多位于soc的adaptive autosar系统上，这些服务可以将连接到mdc的激光雷达，毫米波雷达，摄像头，传感器的数据进行处理，然后将处理后的数据传送给自动驾驶域来进行自动驾驶。管理面服务提供了十大服务，我所在的团队负责十大服务之一的系统状态管理里面的功耗管理。与功耗管理相关的系统状态包括on，pas,ls,ds,pao,off等。on~pas需要发送休眠信号休眠soc ，pas~ls需要发送ign off信号进行熄火下电mcu，ls~pas发送ign on信号点火上电mcu，pas~on发送唤醒信号上电soc，也可以通过ACC硬线唤醒mcu。</p>
+            <p>责任描述：1.定位长稳环境用例失败的原因，例如：PAS-LS-PAS-ON-PAO-DS状态切换过程中报错的原因；2.将环境从B3-F1迁移到B5-F1，将搭建环境所需的mdc,canoe/周立功，以太网转接盒，液冷/风扇，电源，继电器等搬到B5-F1然后搭建环境，记录mdc资产编号；3.执行不同车型的测试用例。</p>
+            <br>
+
+            <p><strong>二、美的机械臂项目</strong> 项目时间：2025.2.6-2025.5.9</p>
+            <p>项目描述：东舟公司提供的机械臂可以对屏端设备进行点检，东舟app利用thrift框架编写了一套python api，可以通过调用函数，实现获取用例，执行任务，获取测试结果，获取测试报告等功能。利用java后台提供的接口，将获取到的用例上传到web端显示，web端可以创建测试计划，利用java后台提供的接口获取测试计划里面包含的用例，在本地的东舟app上面创建测试任务。测试任务执行完成后，再利用java后台提供的接口上传测试结果和测试报告。</p>
+            <p>责任描述：1.利用东舟公司提供的python api获取东舟app里面的测试用例，和java后台的同事对接，上传到devops平台；2.获取devops平台勾选的用例，在东舟app上创建测试任务(利用东舟的python api)；3.利用东舟的python api 获取任务执行结果和测试报告，上传到devops平台。</p>
+            <br>
+
+            <p><strong>三、换电自动化测试项目</strong> 项目时间：2024.6.19-2024.9.20</p>
+            <p>项目描述：蔚来汽车行驶到换电站附近时，汽车的控制屏幕前面会询问是否自动下单，7s倒计时后会默认自动下单。工具部门提供了automaster测试工具，利用automaster对自动下单业务编写自动化测试用例。</p>
+            <p>责任描述：1.编写banyan平台自动化测试用例；2.编写alps平台自动化测试用例；3.编写fy平台自动化测试用例。</p>
+            <br>
+
+            <p><strong>四、推理服务化项目</strong> 项目时间：2024.2.6-2024.4.1</p>
+            <p>项目描述：首先搭建环境：驱动和固件装在宿主机中，cann tookit,atb_models,atb accelerator,torch_npu等依赖安装在docker容器中，然后在docker里面运行一个脚本拉起大模型服务，可以配置lama-7b，baichuan,starcoder等大模型，通过post给该服务传入想要推理的内容，获取推理结果。</p>
+            <p>责任描述：1.搭建测试环境；2.编写提供给大模型服务的参数；3.执行测试用例。</p>
+            <br>
+
+            <p><strong>五、TABI自动化测试</strong> 项目时间：2022.5.5-2024.1.19</p>
+            <p>项目描述：编译版本并给电路板烧录版本后，使用SecureCRT对板子进行串口连接，在SecureCRT的窗口会打印多条操控电路板实现各种功能的命令，可以通过输入这些命令来操作电路板实现advertise/scan/connect/pair等功能，将这些命令组合起来就形成了一条测试case。由于case数量庞大，为节省人力，开发了自动化测试项目，通过python来进行（ble throughput/qcli_demo）测试，和shell来进行soaktester测试。</p>
+            <p>责任描述：1.执行TABI自动化测试；2.使用vs code分析log，定位case fail的原因；3.研究测试框架，并修改框架提升测试效率。</p>
+            <br>
+
+            <p><strong>六、云手机测试</strong> 项目时间：2019.6-2019.8</p>
+            <p>项目描述：服务器部署了多个模拟器，利用python 脚本对模拟器中的元素进行测试，应用unittest 测试框架，命令通过appium  的 4723 端口发送给模拟器，反馈的结果通过 4724 端口发送给终端，可以利用多线程实现多个模拟器同时测试。利用adb 命令连接模拟器以及向模拟器文件夹中push 电脑中的文件。通过 logcat 查看运行日志，定位脚本运行过程中出现的问题。</p>
+            <p>责任描述：1.编写自动化测试的脚本；2.协助解决框架应用中出现的问题；3.搭建测试环境；4.利用git 提交代码。</p>
+            <br>
+
+            <p><strong>七、组合管理与分析评价项目</strong> 项目时间：2020.9-2020.11</p>
+            <p>项目描述：组合管理与分析评价系统由上游 3 个系统提供数据，利用oracle 语句对数据迁移过程中数据的一致性，完整性进行测试。系统对数据库表中的数据进行计算加工后，放到页面展示。通过功能测试对系统的输入输出和业务流程分别测试，并利用qc 工具提出缺陷，交给开发修复。</p>
+            <p>责任描述：1.编写源表和目标表的连接关系；2.利用sql 语句实现数学计算表达式；3.执行功能测试的用例。</p>
+            <br>
+
+            <p><strong>八、与某网站同步更新的模型构建项目</strong> 项目时间：2019.3-2019.5</p>
+            <p>项目描述：爬取某网站内容推荐给自己的用户，由于该网站每天多次更新，人工爬取成本较高，故产生了只爬取网站更新内容模型的需求， 并将模型部署到jenkins 上，每天 6 点运行。</p>
+            <p>责任描述：1.构建爬取更新内容的模型；2.下载爬取的图片内容，并上传至服务器；3.将文字内容与图片的url 一一对应，并上传至mysql 数据库。</p>
+            <br>
+
+            <p><strong>九、5G项目的自动化测试</strong> 项目时间：2017.7-2018.7</p>
+            <p>项目描述：核心网下发数据到BBU,由BBU 中的FPGA 进行编码/译码，编/译码后的数据经AAU 调制后发送给 CPE 中的FPGA 进行译/编码。项目是对上述流程的自动化测试，我所在的团队负责 FPGA 编/译码自动化测试。</p>
+            <p>责任描述：1.将测试流程以文档的 形式总结，并负责给相关同事讲解；2.参与到二级CI 代码构建过程中，并深刻理解代码含义；3.负责测试过程中的故障定位，并对解决情况跟踪反馈。</p>
         </div>
+    </div>
 
-        <div class="job-item">
-            <div class="job-title">天阳宏业科技有限公司 | 测试/开发工程师 <span class="time-text">2019.03 - 2020.11</span></div>
-            <ul>
-                <li>兴业银行项目：Oracle数据迁移测试，使用QC完成金融系统功能测试</li>
-                <li>阿里云项目：Appium+Python实现移动端APP自动化测试</li>
-                <li>爬虫项目：数据抓取、JSON格式化入库、数据备份与系统运维</li>
-            </ul>
+    <!-- 自我评价 -->
+    <div class="section">
+        <div class="section-title">自我评价</div>
+        <div class="content">
+            <p>能用python 编程实现项目中的需求，并能根据需求快速学习相关的知识，运用到项目中。工作认真负责，在服务器端测试前， 我都会确保项目可以在本地正常运行，对于工作充满热情，每当遇到技术难点，攻克它变成了我的全部。</p>
         </div>
-
-        <div class="job-item">
-            <div class="job-title">中兴通讯股份有限公司 | FPGA开发助理工程师 <span class="time-text">2017.07 - 2018.07</span></div>
-            <ul>
-                <li>5G FPGA编解码自动化测试，维护测试环境，定位并跟踪测试故障</li>
-            </ul>
-        </div>
-
-        <!-- 项目经历 -->
-        <h2>重点项目经历</h2>
-        <ul>
-            <li><strong>华为MDC智驾域控低功耗测试</strong>：负责车载域控制器功耗与状态测试，完成机房环境迁移、问题排查与多车型测试落地。</li>
-            <li><strong>美的机械臂自动化项目</strong>：调用第三方API打通测试全流程，实现本地系统与DevOps平台数据互通。</li>
-            <li><strong>蔚来换电自动化测试</strong>：使用Automaster工具开发自动化用例，实现换电业务自动化测试。</li>
-            <li><strong>大模型推理服务测试</strong>：Docker容器部署多款大模型，完成环境搭建、接口与功能验证。</li>
-            <li><strong>网页数据爬虫项目</strong>：Jenkins部署定时爬虫任务，实现网站数据自动抓取、分类、存储与上传。</li>
-        </ul>
-
-        <!-- 自我评价 -->
-        <h2>自我评价</h2>
-        <p>熟练使用Python完成自动化开发、数据处理等工作，学习能力强，可快速掌握新技术并落地到项目中。工作认真细致，执行力强，善于钻研技术问题，具备良好的责任心与团队协作意识。</p>
     </div>
 </body>
 </html>
