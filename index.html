@@ -20,24 +20,24 @@
             color: #333;
         }
 
-        /* 头部容器：先放占满整行的标题，再放个人信息和照片 */
+        /* 头部容器 + 底部横线 */
         .resume-header {
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 2px solid #666;
         }
 
-        /* 标题样式：淡蓝色背景，占满整行，和预览图一致 */
+        /* 板块标题：淡蓝色整行背景 */
         .section-title {
             font-size: 20px;
             border-left: 4px solid #333;
             padding: 6px 10px;
             margin-bottom: 12px;
-            background-color: #e6f0ff; /* 淡蓝色背景 */
-            width: 100%; /* 关键：背景色占满整行 */
+            background-color: #e6f0ff;
+            width: 100%;
         }
 
-        /* 个人信息和照片的布局：标题下方左右分栏 */
+        /* 个人信息 + 照片布局 */
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -49,11 +49,7 @@
             margin: 8px 0;
         }
 
-        /* 照片样式：在标题背景下方，不遮挡背景色 */
-        .header-img {
-            /* 不需要再设置margin-top，因为照片在标题下方 */
-        }
-
+        /* 证件照 */
         .resume-photo {
             width: 120px;
             height: auto;
@@ -79,6 +75,13 @@
             padding-left: 20px;
         }
 
+        /* 公司下方分割线 */
+        .company-line {
+            height: 1px;
+            background-color: #ccc;
+            margin: 8px 0 15px 0;
+        }
+
         /* 响应式适配 */
         @media (max-width: 768px) {
             .header-content {
@@ -95,7 +98,7 @@
     </style>
 </head>
 <body>
-    <!-- 头部：先放占满整行的标题，再放个人信息和照片 -->
+    <!-- 头部 -->
     <div class="resume-header">
         <div class="section-title">个人信息</div>
         <div class="header-content">
@@ -104,9 +107,7 @@
                 <p>性别：男 &nbsp;&nbsp; 年龄：30</p>
                 <p>手机：13544146365</p>
                 <p>邮箱：2730759127@qq.com</p>
-                <p>意向：测试工程师</p>
             </div>
-            <!-- 照片相对路径：同目录下 avatar.jpg -->
             <div class="header-img">
                 <img src="./avatar.jpg" alt="个人证件照" class="resume-photo">
             </div>
@@ -143,45 +144,55 @@
         <div class="section-title">工作经历</div>
         <div class="content">
             <p><strong>软通动力技术有限公司</strong> （2024.2.6-2025.10.11）</p>
-            <p>（1）MDC管理面低功耗测试</p>
+            <!-- 公司分割线 -->
+            <div class="company-line"></div>
+            <p><strong>（1）MDC管理面低功耗测试</strong></p>
             <p>1.定位长稳环境用例失败的原因，例如：PAS-LS-PAS-ON-PAO-DS状态切换过程中报错的原因</p>
             <p>2.将环境从B3-F1迁移到B5-F1，将搭建环境所需的mdc,canoe/周立功，以太网转接盒，液冷/风扇，电源，继电器等搬到B5-F1然后搭建环境，记录mdc资产编号</p>
             <p>3.执行不同车型的测试用例</p>
 
-            <p>（2）美的机械臂项目</p>
+            <p><strong>（2）美的机械臂项目</strong></p>
             <p>1.利用东舟公司提供的python api获取东舟app里面的测试用例，和java后台的同事对接，上传到devops平台</p>
             <p>2.获取devops平台勾选的用例，在东舟app上创建测试任务(利用东舟的python api)</p>
             <p>3.利用东舟的python api 获取任务执行结果和测试报告，上传到devops平台</p>
 
-            <p>（3）蔚来换电自动化项目</p>
+            <p><strong>（3）蔚来换电自动化项目</strong></p>
             <p>1.编写banyan平台自动化测试用例</p>
             <p>2.编写alps平台自动化测试用例</p>
             <p>3.编写fy平台自动化测试用例</p>
 
-            <p>（4）推理服务化测试项目</p>
+            <p><strong>（4）推理服务化测试项目</strong></p>
             <p>1.搭建测试环境</p>
             <p>2.编写提供给大模型服务的参数</p>
             <p>3.执行测试用例</p>
             <br>
 
             <p><strong>中科创达科技股份有限公司</strong> （2022.5.5-2024.1.19）</p>
-            <p>（1）高通蓝牙测试项目</p>
+            <!-- 公司分割线 -->
+            <div class="company-line"></div>
+            <p><strong>（1）高通蓝牙测试项目</strong></p>
             <p>1.对嵌入式linux系统的btapp进行功能测试，编写btapp的自动化测试脚本</p>
             <p>2.编译版本，使用Trace/Jlink给电路板烧版本，搭建TABI自动化测试环境，进行TABI自动化测试</p>
             <p>3.研究压力测试脚本，搭建压力测试环境，跑压力测试</p>
             <br>
 
             <p><strong>软通动力技术有限公司</strong> （2020.11-2021.8）</p>
-            <p>(1)百度项目：对百度的云手机app和h5页面进行功能测试，编写测试用例，创建bug并持续跟踪</p>
+            <!-- 公司分割线 -->
+            <div class="company-line"></div>
+            <p><strong>(1)百度项目</strong>：对百度的云手机app和h5页面进行功能测试，编写测试用例，创建bug并持续跟踪</p>
             <br>
 
             <p><strong>天阳宏业科技有限公司</strong> （2019.3-2020.11）</p>
-            <p>（1）兴业银行项目：利用oracle 对数据迁移过程中的数据进行测试，利用qc 对组合管理与分析评价系统测试</p>
-            <p>（2）阿里云项目：用androidsdk+appium+vysor+python对手机app测试</p>
-            <p>（3）惠信信息爬虫项目：爬取上级给定的网站、app的内容，并负责入库、备份以及日常维护等工作，与后端工程师配合，将爬取的内容以固定的格式（json）写入mysql数据库，根据需求学习相关python知识并应用到项目中</p>
+            <!-- 公司分割线 -->
+            <div class="company-line"></div>
+            <p><strong>（1）兴业银行项目</strong>：利用oracle 对数据迁移过程中的数据进行测试，利用qc 对组合管理与分析评价系统测试</p>
+            <p><strong>（2）阿里云项目</strong>：用androidsdk+appium+vysor+python对手机app测试</p>
+            <p><strong>（3）惠信信息爬虫项目</strong>：爬取上级给定的网站、app的内容，并负责入库、备份以及日常维护等工作，与后端工程师配合，将爬取的内容以固定的格式（json）写入mysql数据库，根据需求学习相关python知识并应用到项目中</p>
             <br>
 
             <p><strong>中兴通讯股份有限公司</strong> （2017.7-2018.7）</p>
+            <!-- 公司分割线 -->
+            <div class="company-line"></div>
             <p>FPGA开发助理工程师：对版本自动化测试，并维护自动化测试的环境</p>
         </div>
     </div>
@@ -211,7 +222,7 @@
             <br>
 
             <p><strong>五、TABI自动化测试</strong> 项目时间：2022.5.5-2024.1.19</p>
-            <p>项目描述：编译版本并给电路板烧录版本后，使用SecureCRT对板子进行串口连接，在SecureCRT的窗口会打印多条操控电路板实现各种功能的命令，可以通过输入这些命令来操作电路板实现advertise/scan/connect/pair等功能，将这些命令组合起来就形成了一条测试case。由于case数量庞大，为节省人力，开发了自动化测试项目，通过python来进行（ble throughput/qcli_demo）测试，和shell来进行soaktester测试。</p>
+            <p>项目描述：编译版本并给电路板烧版本后，使用SecureCRT对板子进行串口连接，在SecureCRT的窗口会打印多条操控电路板实现各种功能的命令，可以通过输入这些命令来操作电路板实现advertise/scan/connect/pair等功能，将这些命令组合起来就形成了一条测试case。由于case数量庞大，为节省人力，开发了自动化测试项目，通过python来进行（ble throughput/qcli_demo）测试，和shell来进行soaktester测试。</p>
             <p>责任描述：1.执行TABI自动化测试；2.使用vs code分析log，定位case fail的原因；3.研究测试框架，并修改框架提升测试效率。</p>
             <br>
 
