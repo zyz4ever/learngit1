@@ -1,0 +1,152 @@
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+$ git init
+Initialized empty Git repository in /Users/michael/learngit/.git/
+
+$ git add readme.txt
+
+$ git commit -m "wrote a readme file"
+[master (root-commit) eaadf4e] wrote a readme file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 readme.txt
+
+ $ git add file1.txt
+$ git add file2.txt file3.txt
+$ git commit -m "add 3 files."
+
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   readme.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git diff readme.txt （在add之前修改了哪些，不是两次add修改了哪些，是上一次add和刚改完还没add的区别）
+diff --git a/readme.txt b/readme.txt
+index 46d49bf..9247db6 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -1,2 +1,2 @@
+-Git is a version control system.
++Git is a distributed version control system.
+ Git is free software.
+
+$ git add readme.txt
+
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   readme.txt
+
+
+$ git commit -m "add distributed"（每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个commit恢复，然后继续工作，而不是把几个月的工作成果全部丢失。）
+[master e475afc] add distributed
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+
+$ git status
+On branch master
+nothing to commit, working tree clean
+小结：
+要随时掌握工作区的状态，使用git status命令。
+如果git status告诉你有文件被修改过，用git diff可以查看修改内容。
+
+$ git add readme.txt
+$ git commit -m "append GPL"（每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个commit恢复，然后继续工作，而不是把几个月的工作成果全部丢失。）
+[master 1094adb] append GPL
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+ $ git log（ git log --pretty=oneline更简洁）
+commit 1094adb7b9b3807259d8cb349e7df1d4d6477073 (HEAD -> master)
+Author: Michael Liao <askxuefeng@gmail.com>
+Date:   Fri May 18 21:06:15 2018 +0800
+
+    append GPL
+
+commit e475afc93c209a690c39c13a46716e8fa000c366
+Author: Michael Liao <askxuefeng@gmail.com>
+Date:   Fri May 18 21:03:36 2018 +0800
+
+    add distributed
+
+commit eaadf4e385e865d25c48e7ca9c8395c3f7dfaef0
+Author: Michael Liao <askxuefeng@gmail.com>
+Date:   Fri May 18 20:59:18 2018 +0800
+
+    wrote a readme file
+
+$ git reset --hard HEAD^（上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。）
+HEAD is now at e475afc add distributed
+--hard参数有啥意义？--hard会回退到上个版本的已提交状态，而--soft会回退到上个版本的未提交状态，--mixed会回退到上个版本已添加但未提交的状态。现在，先放心使用--hard。
+
+
+$ git log
+commit e475afc93c209a690c39c13a46716e8fa000c366 (HEAD -> master)
+Author: Michael Liao <askxuefeng@gmail.com>
+Date:   Fri May 18 21:03:36 2018 +0800
+
+    add distributed
+
+commit eaadf4e385e865d25c48e7ca9c8395c3f7dfaef0
+Author: Michael Liao <askxuefeng@gmail.com>
+Date:   Fri May 18 20:59:18 2018 +0800
+
+    wrote a readme file
+
+
+$ git reset --hard 1094a
+HEAD is now at 83b0afe append GPL
+
+
+Git的版本回退速度非常快，因为Git在内部有个指向当前版本的HEAD指针，当你回退版本的时候，Git仅仅是把HEAD从指向append GPL改为指向add distributed然后顺便把工作区的文件更新了。所以你让HEAD指向哪个版本号，你就把当前版本定位在哪。
+
+$ git reflog（用来记录你的每一次命令：）
+e475afc HEAD@{1}: reset: moving to HEAD^
+1094adb (HEAD -> master) HEAD@{2}: commit: append GPL
+e475afc HEAD@{3}: commit: add distributed
+eaadf4e HEAD@{4}: commit (initial): wrote a readme file
+
+小结：
+HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。
+穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
+要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+
+
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	LICENSE
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   LICENSE
+	modified:   readme.txt
+git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支
+
+
+$ git commit -m "understand how stage works"
+[master e43a48b] understand how stage works
+ 2 files changed, 2 insertions(+)
+ create mode 100644 LICENSE
+
+
