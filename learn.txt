@@ -149,4 +149,38 @@ $ git commit -m "understand how stage works"
  2 files changed, 2 insertions(+)
  create mode 100644 LICENSE
 
+ $ git status
+On branch master
+nothing to commit, working tree clean
+
+小结
+暂存区是Git非常重要的概念，弄明白了暂存区，就弄明白了Git的很多操作到底干了什么。
+
+没弄明白暂存区是怎么回事的童鞋，请向上滚动页面，再看一次。
+
+
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Git has a mutable index called stage.
+Git tracks changes.
+
+$ git add readme.txt
+$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       modified:   readme.txt
+#
+
+$ cat readme.txt 
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Git has a mutable index called stage.
+Git tracks changes of files.
+
+$ git commit -m "git tracks changes"
+[master 519219b] git tracks changes
+ 1 file changed, 1 insertion(+)
 
