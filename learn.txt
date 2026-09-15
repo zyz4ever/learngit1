@@ -373,7 +373,6 @@ $ git remote rm origin
 此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
 
 分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，而SVN在没有联网的时候是拒绝干活的！当有网络的时候，再把本地提交推送一下就完成了同步，真是太方便了！
-
 上次我们讲了先有本地库，后有远程库的时候，如何关联远程库。
 现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。
 首先，登陆GitHub，创建一个新的仓库，名字叫gitskills：
@@ -436,5 +435,26 @@ Deleted branch dev (was b17d20e).
 $ git branch
 * master
 因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。
+我们注意到切换分支使用git checkout <branch>，而前面讲过的撤销修改则是git checkout -- <file>，同一个命令，有两种作用，确实有点令人迷惑。
+创建并切换到新的dev分支，可以使用：
+$ git switch -c dev
+直接切换到已有的master分支，可以使用：
+$ git switch master
+使用新的git switch命令，比git checkout要更容易理解。
+
+小结
+Git鼓励大量使用分支：
+
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>或者git switch <name>
+
+创建+切换分支：git checkout -b <name>或者git switch -c <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
 
 
